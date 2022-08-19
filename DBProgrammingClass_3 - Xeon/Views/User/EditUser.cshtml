@@ -1,0 +1,83 @@
+﻿@model DBProgrammingClass_3.Models.User
+@using DBProgrammingClass_3.Enums
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+<div class="row header">
+    <div class="col-md-12">
+        <h2>Add/Edit User</h2>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<br />
+
+@using (Html.BeginForm("EditUser", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-default">
+        <form class="user-style">
+
+            @Html.HiddenFor(x => x.UserId)
+            @Html.HiddenFor(x => x.IsActive)
+            @Html.HiddenFor(x => x.DateAdded)
+            @Html.HiddenFor(x => x.UpdateDate)
+
+
+            <div class="form-group ">
+                @Html.LabelFor(x => x.UserName, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", placeholder = "Username" })
+                @Html.ValidationMessageFor(x => x.UserName)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Login, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.Login, new { @class = "form-control", placeholder = "Login" })
+                @Html.ValidationMessageFor(x => x.Login)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Email" })
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Profile, new { @class = "control-label" })
+                @Html.ValidationMessageFor(x => x.Profile)
+                <select asp-for="Profile" class="form-control">
+                    <option value="0">Select</option>
+                    <option value="@ProfileEnum.Admin">Administrator</option>
+                    <option value="@ProfileEnum.Default">Default</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password, new { @class = "control-label" })
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Update" />
+                <a class="btn btn-danger" href="javascript:history.back()">Return</a>
+            </div>
+        </form>
+    </div>
+}
+

@@ -1,0 +1,108 @@
+﻿@model List<DBProgrammingClass_3.Models.Technician>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script src="~/Content/main.js"></script>
+
+<div class="page-title">
+    <div class="title-env">
+        <h1 class="title">Technicians</h1>
+        <p class="description">A list of all technicians</p>
+    </div>
+
+    <div class="breadcrumb-env">
+        <ol class="breadcrumb bc-1">
+            <li>
+                <a href="~/"><i class="fa-home"></i>Home</a>
+            </li>
+            <li>
+                <a href="/Technician">Technicians</a>
+            </li>
+            <li class="active">
+                <strong>List</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+<!-- Responsive Table -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Index", "Technician", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-md-2 pull-left text-left">
+                                @Html.ActionLink("Add Technician", "AddTechnician", null, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>Tech ID</th>
+                                <th data-priority="1">Name</th>
+                                <th data-priority="3">Phone</th>
+                                <th data-priority="1">Email</th>
+                                <th data-priority="3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var technician in Model)
+                            {
+                                <tr>
+                                    <th>@technician.TechID</th>
+                                    <td>@technician.Name</td>
+                                    <td>@technician.Phone</td>
+                                    <td>@technician.Email</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditTechnician", "Technician", new { id = technician.TechID }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Delete", "Delete", "Technician", new { id = technician.TechID }, new { @class = "btn btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <script type="text/javascript">
+                    // This JavaScript Will Replace Checkboxes in dropdown toggles
+                    jQuery(document).ready(function ($) {
+                        setTimeout(function () {
+                            $(".checkbox-row input").addClass('cbr');
+                            cbr_replace();
+                        }, 0);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

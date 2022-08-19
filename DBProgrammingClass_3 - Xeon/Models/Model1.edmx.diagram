@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5828f2229a9b4fa5b4fc19ac57e4e0ff" Name="Diagram1">
+        <EntityTypeShape EntityType="TechSupportModel.Customer" Width="1.5" PointX="8" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechSupportModel.Incident" Width="1.5" PointX="3.25" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechSupportModel.Product" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechSupportModel.Registration" Width="1.5" PointX="5.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechSupportModel.State" Width="1.5" PointX="3.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TechSupportModel.Technician" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TechSupportModel.FK_Incidents_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TechSupportModel.FK_Registrations_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TechSupportModel.FK_States_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="TechSupportModel.FK_Incidents_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="TechSupportModel.FK_Incidents_Technicians" ManuallyRouted="false" />
+        <AssociationConnector Association="TechSupportModel.FK_Registrations_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TechSupportModel.User" Width="1.5" PointX="10.25" PointY="0.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

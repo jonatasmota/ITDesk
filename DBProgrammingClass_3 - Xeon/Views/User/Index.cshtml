@@ -1,0 +1,115 @@
+﻿@model List<DBProgrammingClass_3.Models.User>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script src="~/Content/main.js"></script>
+
+<div class="page-title">
+    <div class="title-env">
+        <h1 class="title">Users</h1>
+        <p class="description">A list of all users</p>
+    </div>
+
+    <div class="breadcrumb-env">
+        <ol class="breadcrumb bc-1">
+            <li>
+                <a href="~/"><i class="fa-home"></i>Home</a>
+            </li>
+            <li>
+                <a href="/User">Users</a>
+            </li>
+            <li class="active">
+                <strong>List</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+<!-- Responsive Table -->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Index", "User", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-md-2 pull-left text-left">
+                                @Html.ActionLink("Add User", "AddUser", null, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th data-priority="1">Name</th>
+                                <th data-priority="3">Login</th>
+                                <th data-priority="1">Email</th>
+                                <th data-priority="1">Profile</th>
+                                <th data-priority="1">Date Added</th>
+                                <th data-priority="1">Update Date</th>
+                                <th data-priority="3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                            <tr>
+                                <th>@user.UserId</th>
+                                <td>@user.UserName</td>
+                                <td>@user.Login</td>
+                                <td>@user.Email</td>
+                                <td>@(user.Profile == (int)DBProgrammingClass_3.Enums.ProfileEnum.Default ? "Default" : "Admin")</td>
+                                <td>@user.DateAdded</td>
+                                <td>@user.UpdateDate</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "EditUser", "User", new { id = user.UserId }, new { @class = "btn btn-success" })
+                                    @Html.ActionLink("Delete", "Delete", "User", new { id = user.UserId }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <script type="text/javascript">
+                    // This JavaScript Will Replace Checkboxes in dropdown toggles
+                    jQuery(document).ready(function ($) {
+                        setTimeout(function () {
+                            $(".checkbox-row input").addClass('cbr');
+                            cbr_replace();
+                        }, 0);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

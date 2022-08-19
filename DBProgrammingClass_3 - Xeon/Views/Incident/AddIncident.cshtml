@@ -1,0 +1,89 @@
+﻿@model DBProgrammingClass_3.Models.Incident
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+<div class="row header">
+    <div class="col-md-12">
+        <h2>Add/Edit Incident # @Model.IncidentID</h2>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<br />
+
+@using (Html.BeginForm("AddIncident", "Incident", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.IncidentID);
+    <div class="row">
+        <div class="col-md-12 panel panel-default">
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">Title&nbsp;</label>
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Customer&nbsp;</label>
+                        @Html.DropDownListFor(model => model.CustomerID, new SelectList(ViewBag.Customers, "CustomerID", "Name"),
+                    new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Techinician&nbsp;</label>
+                        @Html.DropDownListFor(model => model.TechID, new SelectList(ViewBag.Technicians, "TechID", "Name"),
+                    new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">Product&nbsp;</label>
+                        @Html.DropDownListFor(model => model.ProductCode, new SelectList(ViewBag.Products, "ProductCode", "Name"),
+                    new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Date Opened&nbsp;</label>
+                        @Html.TextBoxFor(model => model.DateOpened, new { @class = "form-control", type = "date", @Value = Model.DateOpened.ToShortDateString() })
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Date Closed&nbsp;</label>
+                        @if (Model.DateClosed.HasValue)
+                        {
+                            @Html.TextBoxFor(model => model.DateClosed, new { @class = "form-control", type = "date", @Value = Model.DateClosed.ToString().Substring(0, 10) })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.DateClosed, new { @class = "form-control", type = "date" })
+
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label class="control-label">Description&nbsp;</label>
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a class="btn btn-danger" href="javascript:history.back()">Return</a>
+            </div>
+            </div>
+        </div>
+}

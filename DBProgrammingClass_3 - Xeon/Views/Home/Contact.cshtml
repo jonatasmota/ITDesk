@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+@if (ViewBag.Error != null)
+{
+    <h2>@ViewBag.Error</h2>
+}
+
+<div class="page-title">
+    <div class="title-env">
+        <h1 class="title">We're here!</h1>
+        <p class="description">Our door is always open for a good cup of coffee.</p>
+    </div>
+
+    <div class="breadcrumb-env">
+        <ol class="breadcrumb bc-1">
+            <li>
+                <a href="~/"><i class="fa-home"></i>Home</a>
+            </li>
+            <li class="active">
+                <strong>Contact</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <form method="post" action="Contact">
+
+            <span class="form-control-static">Receiver: </span>
+            <input class="form-control" type="text" name="receiver" />
+            <br />
+            <span class="form-control-static">Subject: </span>
+            <input class="form-control" type="text" name="subject" />
+            <br />
+            <span class="form-control-static">Message: </span>
+            <input class="form-control" type="text" name="message" />
+            <br />
+            <input class="btn btn-primary" type="submit" value="Send" />
+        
+    </form>
+</div>

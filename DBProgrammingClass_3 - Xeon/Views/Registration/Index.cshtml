@@ -1,0 +1,103 @@
+﻿@model List<DBProgrammingClass_3.Models.Registration>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script src="~/Content/main.js"></script>
+
+<div class="page-title">
+    <div class="title-env">
+        <h1 class="title">Registrations</h1>
+        <p class="description">A list of all registrations</p>
+    </div>
+
+    <div class="breadcrumb-env">
+        <ol class="breadcrumb bc-1">
+            <li>
+                <a href="~/"><i class="fa-home"></i>Home</a>
+            </li>
+            <li>
+                <a href="/Registration">Registrations</a>
+            </li>
+            <li class="active">
+                <strong>List</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<!-- Responsive Table -->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Index", "Registration", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-md-2 pull-left text-left">
+                                @Html.ActionLink("Add Registration", "AddRegistration", null, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Customer Name</th>
+                                <th>Registration Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var registration in Model)
+                            {
+                                <tr>
+                                    <td>@registration.Product.Name</td>
+                                    <td>@registration.Customer.Name</td>
+                                    <td>@registration.RegistrationDate.ToShortDateString()</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditRegistration", "Registration", registration, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Delete", "Delete", "Registration", new { productCode = registration.ProductCode.Trim(), customerID = registration.CustomerID }, new { @class = "btn btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+﻿@model DBProgrammingClass_3.Models.Product
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+<div class="row header">
+    <div class="col-md-12">
+        <h2>Add/Edit Product</h2>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<br />
+
+@using (Html.BeginForm("EditProduct", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-default">
+        <form class="product-style">
+            <div class="form-group">
+                @Html.LabelFor(x => x.ProductCode, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", placeholder = "Product Code" })
+                @Html.ValidationMessageFor(x => x.ProductCode)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Name" })
+                @Html.ValidationMessageFor(x => x.Name)
+            </div>
+
+            <div class="form-group ">
+                @Html.LabelFor(x => x.Version, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.Version, new { @class = "form-control", placeholder = "Version" })
+                @Html.ValidationMessageFor(x => x.Version)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.ReleaseDate, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.ReleaseDate, new { @class = "form-control", type = "date", @Value = Model.ReleaseDate.ToString("yyyy-MM-dd"), placeholder = "Release Date" })
+                @Html.ValidationMessageFor(x => x.ReleaseDate)
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Update" />
+                <a class="btn btn-danger" href="javascript:history.back()">Return</a>
+            </div>
+        </form>
+    </div>
+}
+

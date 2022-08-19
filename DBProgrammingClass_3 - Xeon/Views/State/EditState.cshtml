@@ -1,0 +1,100 @@
+﻿@model DBProgrammingClass_3.Models.State
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+<div class="row header">
+    <div class="col-md-12">
+        <h2>Add/Edit State</h2>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<br />
+
+@using (Html.BeginForm("EditState", "State", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Customers);
+    <div class="panel panel-default">
+        <form class="product-style">
+            <div class="form-group">
+                @Html.LabelFor(x => x.StateCode, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.StateCode, new { @class = "form-control", placeholder = "State Code" })
+                @Html.ValidationMessageFor(x => x.StateCode)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.StateName, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.StateName, new { @class = "form-control", placeholder = "State name" })
+                @Html.ValidationMessageFor(x => x.StateName)
+            </div>
+
+            <div class="form-group ">
+                @Html.LabelFor(x => x.FirstZipCode, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.FirstZipCode, new { @class = "form-control", placeholder = "First ZipCode" })
+                @Html.ValidationMessageFor(x => x.FirstZipCode)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.LastZipCode, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.LastZipCode, new { @class = "form-control", type = "datetime", placeholder = "Last ZipCode" })
+                @Html.ValidationMessageFor(x => x.LastZipCode)
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Update" />
+                <a class="btn btn-danger" href="javascript:history.back()">Return</a>
+            </div>
+        </form>
+    </div>
+    @*
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label class="control-label">Code&nbsp;</label>
+                            @Html.TextBoxFor(model => model.StateCode, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label">Name&nbsp;</label>
+                            @Html.TextBoxFor(model => model.StateName, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">First ZipCode&nbsp;</label>
+                            @Html.TextBoxFor(model => model.FirstZipCode, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label">Last ZipCode&nbsp;</label>
+                            @Html.TextBoxFor(model => model.LastZipCode, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary" />
+            <a class="btn btn-danger" href="javascript:history.back()">Return</a>
+        </div>*@
+
+}

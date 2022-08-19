@@ -1,0 +1,245 @@
+﻿@model List<DBProgrammingClass_3.Models.Customer>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+<div class="greeting">
+    <h3>Welcome to IT Desk</h3>
+</div>
+
+<div class="main-content">
+    <div class="row">
+
+        <div class="col-sm-3">
+
+            <div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+                <div class="xe-icon">
+                    <i class="linecons-doc"></i>
+                </div>
+                <div class="xe-label">
+                    <strong class="num">@ViewBag.Incidents</strong>
+                    <span>Total Incidents</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+            <div class="xe-widget xe-counter xe-counter-blue" data-count=".num" data-from="1" data-to="117" data-suffix="k" data-duration="3" data-easing="false">
+                <div class="xe-icon">
+                    <i class="linecons-heart"></i>
+                </div>
+                <div class="xe-label">
+                    <strong class="num">@ViewBag.Customers</strong>
+                    <span>Total Customers</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="1000" data-to="2470" data-duration="4" data-easing="true">
+                <div class="xe-icon">
+                    <i class="linecons-cd"></i>
+                </div>
+                <div class="xe-label">
+                    <strong class="num">@ViewBag.Products</strong>
+                    <span>Total Products</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="xe-widget xe-counter xe-counter-red" data-count=".num" data-from="0" data-to="57" data-prefix="-," data-suffix="%" data-duration="5" data-easing="true" data-delay="1">
+                <div class="xe-icon">
+                    <i class="linecons-user"></i>
+                </div>
+                <div class="xe-label">
+                    <strong class="num">@ViewBag.Users</strong>
+                    <span>Total Users</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="xe-widget xe-counter-block" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+                <div class="xe-upper">
+                    <div class="xe-icon">
+                        <i class="linecons-clock"></i>
+                    </div>
+                    <div class="xe-label">
+                        <strong class="num">@ViewBag.OpenIncidents</strong>
+                        <span>Open Incidents</span>
+                    </div>
+                </div>
+                <div class="xe-lower">
+                    <div class="border"></div>
+                    <span>Result</span>
+                    <strong>80% Increase</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="xe-widget xe-counter-block xe-counter-block-purple" data-count=".num" data-from="0" data-to="512" data-duration="3">
+                <div class="xe-upper">
+                    <div class="xe-icon">
+                        <i class="linecons-thumbs-up"></i>
+                    </div>
+                    <div class="xe-label">
+                        <strong class="num">@ViewBag.ClosedIncidents</strong>
+                        <span>Closed Incidents</span>
+                    </div>
+                </div>
+                <div class="xe-lower">
+                    <div class="border"></div>
+                    <span>Decrease</span>
+                    <strong>2 more closed Incidents</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+
+            <div class="xe-widget xe-counter-block xe-counter-block-blue" data-suffix="k" data-count=".num" data-from="0" data-to="310" data-duration="4" data-easing="false">
+                <div class="xe-upper">
+
+                    <div class="xe-icon">
+                        <i class="linecons-user"></i>
+                    </div>
+                    <div class="xe-label">
+                        <strong class="num">@ViewBag.Technicians</strong>
+                        <span>Total Technicians</span>
+                    </div>
+
+                </div>
+                <div class="xe-lower">
+                    <div class="border"></div>
+
+                    <span>Work overload</span>
+                    <strong>51.55%</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+
+            <div class="xe-widget xe-counter-block xe-counter-block-orange">
+                <div class="xe-upper">
+
+                    <div class="xe-icon">
+                        <i class="fa-life-ring"></i>
+                    </div>
+                    <div class="xe-label">
+                        <strong class="num">24/7</strong>
+                        <span>Live Support</span>
+                    </div>
+
+                </div>
+                <div class="xe-lower">
+                    <div class="border"></div>
+                    <span>Tickets Opened this Month</span>
+                    <strong data-count="this" data-from="0" data-to="14215" data-duration="2">@ViewBag.IncidentsMonth</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+            <div class="xe-widget xe-progress-counter xe-progress-counter-pink " data-count=".num" data-from="0" data-to="12425" data-duration="2">
+                <div class="xe-background">
+                    <i class="linecons-heart"></i>
+                </div>
+
+                <div class="xe-upper">
+                    <div class="xe-icon">
+                        <i class="linecons-heart"></i>
+                    </div>
+                    <div class="xe-label">
+                        <span>New Registrations</span>
+                        <strong class="num">@ViewBag.RegistrationsMonth</strong>
+                    </div>
+                </div>
+
+                <div class="xe-progress">
+                    <span class="xe-progress-fill" data-fill-from="0" data-fill-to="56" data-fill-unit="%" data-fill-property="width" data-fill-duration="2" data-fill-easing="true"></span>
+                </div>
+
+                <div class="xe-lower">
+                    <span>Registrations p/ Month</span>
+                    <strong>41% more registrations</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+
+            <div class="xe-widget xe-progress-counter xe-progress-counter-turquoise" data-count=".num" data-from="0" data-to="520" data-suffix="k" data-duration="3">
+
+                <div class="xe-background">
+                    <i class="linecons-paper-plane"></i>
+                </div>
+
+                <div class="xe-upper">
+                    <div class="xe-icon">
+                        <i class="linecons-paper-plane"></i>
+                    </div>
+                    <div class="xe-label">
+                        <span>Incidents</span>
+                        <strong class="num">30</strong>
+                    </div>
+                </div>
+
+                <div class="xe-progress">
+                    <span class="xe-progress-fill" data-fill-from="0" data-fill-to="82" data-fill-unit="%" data-fill-property="width" data-fill-duration="3" data-fill-easing="true"></span>
+                </div>
+
+                <div class="xe-lower">
+                    <span>Incidents closed last month</span>
+                    <strong>82% more efficiency</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+
+            <div class="xe-widget xe-vertical-counter xe-vertical-counter-primary" data-count=".num" data-from="0" data-to="128.4" data-decimal="," data-suffix="%" data-duration="2.5">
+                <div class="xe-icon">
+                    <i class="linecons-calendar"></i>
+                </div>
+
+                <div class="xe-label">
+                    <strong class="time">@ViewBag.DateTime</strong>
+                    <a href="~/Incident/">
+                        <span>Open incidents</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+
+            <div class="xe-widget xe-vertical-counter xe-vertical-counter-danger" data-count=".num" data-from="0" data-to="67.9" data-decimal="," data-suffix="%" data-duration="3">
+                <div class="xe-icon">
+                    <i class="linecons-cloud"></i>
+                </div>
+
+                <div class="xe-label">
+                    <strong class="text">Troubleshooting</strong>
+                    <a href="~/Home/Contact/">
+                        <span>Contact Us.</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

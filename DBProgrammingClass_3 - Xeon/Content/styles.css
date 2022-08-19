@@ -1,0 +1,53 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+}
+
+.customer-style {
+    padding: 25px;
+    background-color: #fff;
+    box-shadow: -14px 16px 37px -1px rgba(0,0,0,0.1);
+}
+
+.field-validation-error {
+    color: #e01d1d;
+}
+
+.close-alert {
+    position: relative;
+    right: 0;
+    margin-top: -30px;
+    margin-right: -30px;
+    float: right;
+    border-radius: 15px;
+    width: 30px;
+    height: 31px;
+}
+
+.add-item {
+    padding-top: 25px;
+}
+
+.dataTables_wrapper .table thead > tr .sorting, .dataTables_wrapper .table thead > tr .sorting_asc, .dataTables_wrapper .table thead > tr .sorting_desc {
+    background: none !important; 
+}
+
+.input-dark {
+    border: groove thin #EFF2F1;
+    background-color: #2F323A;
+}
+
+.btn-dark {
+    background-color: #000;
+}
+
+.btn-dark:hover {
+     color: #EFF2F1;
+}
+
+.login-footer a {
+    color: #EFF2F1;
+}

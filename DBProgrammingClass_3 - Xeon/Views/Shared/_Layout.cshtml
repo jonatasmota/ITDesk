@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Helpdesk management solution" />
+    <meta name="author" content="" />
+
+    <title>IT Desk</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+    <link rel="stylesheet" href="~/assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="~/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/assets/css/xenon-core.css">
+    <link rel="stylesheet" href="~/assets/css/xenon-forms.css">
+    <link rel="stylesheet" href="~/assets/css/xenon-components.css">
+    <link rel="stylesheet" href="~/assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+
+    <script src="~/assets/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body class="page-body">
+
+    <div class="page-container">
+        <div class="sidebar-menu toggle-others">
+            <div class="sidebar-menu-inner">
+                <header class="logo-env">
+
+                    <div class="logo">
+                        <a href="~/" class="logo-expanded">
+                            <img src="~/assets/images/itdesk.png" width="80" alt="Logo" />
+                        </a>
+
+                        <a href="~/" class="logo-collapsed">
+                            <img src="~/assets/images/id_collapsed.png" width="20" alt="Logo" />
+                        </a>
+                    </div>
+
+
+                    <div class="mobile-menu-toggle visible-xs">
+                        <a href="#" data-toggle="user-info-menu">
+                            <i class="fa-bell-o"></i>
+                            <span class="badge badge-success">7</span>
+                        </a>
+
+                        <a href="#" data-toggle="mobile-menu">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </div>
+
+                </header>
+
+                <ul id="main-menu" class="main-menu">
+                    <li>
+                        <a href="~/Incident">
+                            <i class="linecons-doc"></i>
+                            <span class="title">Incidents</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Incident">
+                                    <span class="title">Incidents List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Incident/AddIncident/">
+                                    <span class="title">Add Incident</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/Product">
+                            <i class="linecons-cd"></i>
+                            <span class="title">Products</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Product">
+                                    <span class="title">Products List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Product/AddProduct">
+                                    <span class="title">Add Product</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/Customer">
+                            <i class="linecons-heart"></i>
+                            <span class="title">Customers</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Customer">
+                                    <span class="title">Customers List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Customer/AddCustomer/">
+                                    <span class="title">Add Customer</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/Technician">
+                            <i class="linecons-t-shirt"></i>
+                            <span class="title">Technicians</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Technician/">
+                                    <span class="title">Technicians List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Technician/AddTechnician/">
+                                    <span class="title">Add Technician</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/State">
+                            <i class="linecons-location"></i>
+                            <span class="title">States</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/State/">
+                                    <span class="title">States List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/State/AddState/">
+                                    <span class="title">Add State</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/User">
+                            <i class="linecons-user"></i>
+                            <span class="title">Users</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/User/">
+                                    <span class="title">Users List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/User/AddUser/">
+                                    <span class="title">Add User</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/Registration">
+                            <i class="linecons-attach"></i>
+                            <span class="title">Registrations</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="~/Registration/">
+                                    <span class="title">Registrations List</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Registration/AddRegistration/">
+                                    <span class="title">Add Registration</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <nav class="navbar user-info-navbar" role="navigation">
+                <ul class="user-info-menu left-links list-inline list-unstyled">
+                    <li class="hidden-sm hidden-xs">
+                        <a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="user-info-menu right-links list-inline list-unstyled">
+                    <li class="dropdown user-profile">
+                        <a href="~/Login/Logout">
+                            <img src="https://picsum.photos/500/500?random=1" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+                            <span>
+                                Logout
+                                <i class="fa-lock"></i>
+                            </span>
+                        </a>
+
+                        <ul class="dropdown-menu user-profile-menu list-unstyled">
+                            <li>
+                                <a href="#edit-profile">
+                                    <i class="fa-edit"></i>
+                                    New Post
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <i class="fa-wrench"></i>
+                                    Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#profile">
+                                    <i class="fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#help">
+                                    <i class="fa-info"></i>
+                                    Help
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="extra-lockscreen.html">
+                                    <i class="fa-lock"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </nav>
+
+
+            @RenderBody()
+            <hr />
+            <script>
+                jQuery(document).ready(function ($) {
+                    $('a[href="#layout-variants"]').on('click', function (ev) {
+                        ev.preventDefault();
+
+                        var win = { top: $(window).scrollTop(), toTop: $("#layout-variants").offset().top - 15 };
+
+                        TweenLite.to(win, .3, {
+                            top: win.toTop, roundProps: ["top"], ease: Sine.easeInOut, onUpdate: function () {
+                                $(window).scrollTop(win.top);
+                            }
+                        });
+                    });
+                });
+            </script>
+
+            <footer class="main-footer sticky footer-type-2">
+                <div class="footer-inner">
+
+                    <div class="footer-text">
+                        &copy; 2022
+                        <strong>ITDESK</strong>
+                        application by <a href="http://www.jonatasmota.com" target="_blank">Jonatas Mota</a>
+                    </div>
+
+                    <div class="go-up">
+                        <a href="#" rel="go-top">
+                            <i class="fa-angle-up"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Bottom Scripts -->
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/TweenMax.min.js"></script>
+    <script src="~/assets/js/resizeable.js"></script>
+    <script src="~/assets/js/joinable.js"></script>
+    <script src="~/assets/js/xenon-api.js"></script>
+    <script src="~/assets/js/xenon-toggles.js"></script>
+
+    <!-- JavaScripts initializations and stuff -->
+    <script src="~/assets/js/xenon-custom.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+    <script src="~/Content/main.js"></script>
+</body>
+</html>

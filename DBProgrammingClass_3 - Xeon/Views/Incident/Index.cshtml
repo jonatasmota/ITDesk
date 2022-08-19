@@ -1,0 +1,117 @@
+﻿@model List<DBProgrammingClass_3.Models.Incident>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+<script src="~/Content/main.js"></script>
+
+<div class="page-title">
+    <div class="title-env">
+        <h1 class="title">Incidents</h1>
+        <p class="description">A list of all incidents</p>
+    </div>
+
+    <div class="breadcrumb-env">
+        <ol class="breadcrumb bc-1">
+            <li>
+                <a href="~/"><i class="fa-home"></i>Home</a>
+            </li>
+            <li>
+                <a href="/Incident">Incidents</a>
+            </li>
+            <li class="active">
+                <strong>List</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<!-- Responsive Table -->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Index", "Incident", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-md-2 pull-left text-left">
+                                @Html.ActionLink("Add Incident", "AddIncident", null, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Opened</th>
+                                <th>Closed</th>
+                                <th>Customer</th>
+                                <th>Technician</th>
+                                <th>Product</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var incident in Model)
+                            {
+                                <tr>
+                                    <td>@incident.IncidentID</td>
+                                    <td>@incident.Title</td>
+                                    <td>@incident.DateOpened.ToShortDateString()</td>
+                                    @if (!@incident.DateClosed.HasValue)
+                                    {
+                                        <td>Still Open</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@incident.DateClosed.ToString().Substring(0, 10)</td>
+                                    }
+                                    <td>@incident.Customer.Name</td>
+                                    @if (@incident.TechID == null)
+                                    {
+                                        <td>No Tech</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@incident.Technician.Name</td>
+                                    }
+                                    <td>@incident.Product.Name</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "AddIncident", "Incident", new { id = incident.IncidentID }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Delete", "Delete", "Incident", new { id = incident.IncidentID }, new { @class = "btn btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model DBProgrammingClass_3.Models.Registration
+
+<link rel="stylesheet" href="~/Content/styles.css" />
+
+<div class="row header">
+    <div class="col-md-12">
+        <h2>Add/Edit Registration</h2>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<br />
+
+
+@using (Html.BeginForm("EditRegistration", "Registration", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-default">
+        <form class="product-style">
+            @Html.Hidden("originalCust", Model.CustomerID)
+            @Html.Hidden("originalProd", Model.ProductCode )
+            @Html.Hidden("originalDate", Model.RegistrationDate)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Product.Name, new { @class = "control-label" })
+                @Html.DropDownListFor(x => x.ProductCode, new SelectList(ViewBag.Products, "ProductCode", "Name"),
+                        new { @class = "form-control", @name = "prodCode" })
+                @Html.ValidationMessageFor(x => x.ProductCode)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Customer.Name, new { @class = "control-label" })
+                @Html.DropDownListFor(x => x.CustomerID, new SelectList(ViewBag.Customers, "CustomerID", "Name"),
+                    new { @class = "form-control", @name = "custID" })
+                @Html.ValidationMessageFor(x => x.CustomerID)
+            </div>
+
+            <div class="form-group ">
+                @Html.LabelFor(x => x.RegistrationDate, new { @class = "control-label" })
+                @Html.TextBoxFor(x => x.RegistrationDate, new { @class = "form-control", type = "date", @Value = Model.RegistrationDate.ToString("yyyy-MM-dd"), placeholder = "Registration Date" })
+                @Html.ValidationMessageFor(x => x.RegistrationDate)
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Update" />
+                <a class="btn btn-danger" href="javascript:history.back()">Return</a>
+            </div>
+        </form>
+    </div>
+}
